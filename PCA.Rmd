@@ -8,7 +8,7 @@ library(dplyr)
 data <- read.csv("~/data.csv")
 ```
 
-Arange data
+#Arrange data
 ```{r}
 medians<-data %>%
   filter(FG!="B73 x PT S1") %>%
@@ -22,13 +22,15 @@ medians<-data %>%
 smedians<- medians %>%
   select(DM, LM, PM, GH, NH)
 ```
+
+#Correlations
 ```{r}
 round(cor(smedians)*10)
 pairs(smedians, pch=19, col="black")
 ```
 ![correlations](correlation.png)
 
-
+#PCA
 ```{r}
 pc1<- prcomp(smedians, scale.=T)
 rot<- pc1$r
@@ -36,6 +38,7 @@ x<- pc1$x
 summary(pc1)
 ```
 
+#Graph PCA
 ```{r}
 round(rot*10)
 par(mfrow = c(1, 3))
