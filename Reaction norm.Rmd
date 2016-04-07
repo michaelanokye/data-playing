@@ -13,6 +13,16 @@ data <- read.csv("~/resultados/datos.csv")
 
 #Arrange data
 
+Organize data agree the two fields and select the trait to graph
+
+Abbreviations for traits are a as follows:
+
+LM, Length to cob
+
+FG, Phenotype
+
+CAMPO, field
+
 ```{r}
 length <- data %>%
   filter(FG==c("B73", "PT")) %>%
@@ -21,10 +31,11 @@ length <- data %>%
   summarise(LM= median(LM))
 ```
 
-#Graphic
+#Graphing
 ```{r}
 ggplot(length, aes(CAMPO., LM, group=FG, colour=FG))+
   geom_line()+
   geom_point()
 ```
+
 ![grafic](Longitud.jpeg)
