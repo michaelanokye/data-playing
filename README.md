@@ -2,4 +2,4 @@
 
 
 
-Different analysis with phenotypic data of maize :)
+Different analysis with maize phenotypic data  :)
