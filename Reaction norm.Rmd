@@ -1,6 +1,6 @@
 ---
 title: "Reaction norm"
-author: "Denisse Díaz"
+author: "Denisse DÃ­az"
 ---
 
 ##Doing Reaction norms
@@ -27,3 +27,4 @@ ggplot(length, aes(CAMPO., LM, group=FG, colour=FG))+
   geom_line()+
   geom_point()
 ```
+![grafic](Longitud.jpeg)
