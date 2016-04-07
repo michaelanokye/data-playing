@@ -1,0 +1,14 @@
+
+library("ggplot2")
+library("dplyr")
+data <- read.csv("~/resultados/datos.csv")
+
+length <- data %>%
+  filter(FG==c("B73", "PT")) %>%
+  select(CAMPO., FG,LM) %>%
+  group_by(CAMPO., FG) %>%
+  summarise(LM= median(LM))
+
+ggplot(length, aes(CAMPO., LM, group=FG, colour=FG))+
+  geom_line()+
+  geom_point()
