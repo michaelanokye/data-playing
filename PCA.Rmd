@@ -1,0 +1,51 @@
+---
+title: "PCA"
+author: "Denisse Díaz"
+---
+
+```{r}
+library(dplyr)
+data <- read.csv("C:/Users/Denisse/Desktop/data.csv")
+```
+
+```{r}
+medians<-data %>%
+  filter(FG!="B73 x PT S1") %>%
+  select(FG,LM, DM, NHG, PM, GPH, DM2, PTGR) %>%
+  group_by(FG) %>%
+  summarise(DM= median(DM),
+            LM= median(LM),
+            PM= median(PM),
+            DO= median(DM2),
+            PG= median(PTGR),
+            GH= median(GPH),
+            NH= median(NHG))
+
+smedians<- medians %>%
+  select(DM, LM, PM, PG, DO, GH, NH)
+
+round(cor(smedians)*10) #Redondea la correlacion
+
+pairs(smedians, pch=19, col="black")
+```
+
+```{r}
+pc1<- prcomp(smedians, scale.=T)
+rot<- pc1$r
+x<- pc1$x
+summary(pc1)
+```
+
+```{r}
+round(rot*10)
+colvec <- 
+par(mfrow = c(1, 3))
+plot(rot[, 1], rot[, 2], pch = "")
+abline(h = 0, v = 0)
+text(rot[, 1], rot[, 2], label = rownames(rot), col = colvec)
+plot(rot[, 2], rot[, 3], pch = "")
+abline(h = 0, v = 0)
+text(rot[, 2], rot[, 3], label = rownames(rot), col = colvec)
+plot(rot[, 3], rot[, 4], pch = "")
+abline(h = 0, v = 0)
+text(rot[, 3], rot[, 4], label = rownames(rot), col = colvec)
