@@ -17,9 +17,11 @@ cc<- correlations %>%
 diag(cc) <-0
 Col <- cc
 Col[] <- "red"
-Col[cc>0.8] <- "blue"
-plotweb(cc, legend=F, maxarrow = 3, arr.col = Col)
+Col[cc>0.8] <- "blue" #the values greater than 0.8 will be blue, you can change this value ever than you want...
+plotweb(cc, maxarrow = 3, arr.col = Col)
 ```
+
+
 ![correlations](correlations.png)
 
 
@@ -32,7 +34,7 @@ diag(mc) <-0
 Col <- mc
 Col[] <- "red"
 Col[mc>0.7] <- "green"
-plotweb(mc, legend=F, maxarrow = 3, arr.col = Col)
+plotweb(mc, legend=T, maxarrow = 3, arr.col = Col) #legent=F shows the higher and lower value
 ```
 ![metepec](met_cor.png)
 
@@ -46,6 +48,6 @@ diag(bc) <-0
 Col <- bc
 Col[] <- "black"
 Col[bc>0.8] <- "magenta"
-plotweb(bc, legend=T, maxarrow = 3, arr.col = Col, bty="n")
+plotweb(bc, legend=T, maxarrow = 3, arr.col = Col, bty="n") #bty="n" removes the contour
 ```
 ![banderas](ban_cor.png)
