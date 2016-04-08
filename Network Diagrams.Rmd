@@ -1,0 +1,54 @@
+---
+title: "Network diagrams"
+author: "Denisse"
+date: "8 de abril de 2016"
+---
+
+```{r}
+library(dplyr)
+library(diagram)
+correlations <- read.csv("~/Desktop/Denisse/Output/correlations.csv")
+met_cor <- read.csv("~/Desktop/Denisse/Output/met_cor.csv")
+ban_cor <- read.csv("~/Desktop/Denisse/Output/ban_cor.csv")
+```
+
+View data
+```{r}
+head(correlations)
+```
+
+#Correlations
+
+```{r}
+cc<- correlations %>%
+  select(-X)
+diag(cc) <-0
+Col <- cc
+Col[] <- "red"
+Col[cc>0.8] <- "blue"
+plotweb(cc, legend=F, maxarrow = 3, arr.col = Col)
+```
+
+#Metepec corrrelations
+
+```{r}
+mc<- met_cor %>%
+  select(-X)
+diag(mc) <-0
+Col <- mc
+Col[] <- "red"
+Col[mc>0.8] <- "blue"
+plotweb(mc, legend=F, maxarrow = 3, arr.col = Col)
+```
+
+#Banderas correlations
+
+```{r}
+bc<- ban_cor %>%
+  select(-X)
+diag(bc) <-0
+Col <- bc
+Col[] <- "red"
+Col[bc>0.8] <- "blue"
+plotweb(bc, legend=T, maxarrow = 3, arr.col = Col, bty="n")
+```
