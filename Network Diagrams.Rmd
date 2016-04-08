@@ -7,9 +7,6 @@ date: "8 de abril de 2016"
 ```{r}
 library(dplyr)
 library(diagram)
-correlations <- read.csv("~/Desktop/Denisse/Output/correlations.csv")
-met_cor <- read.csv("~/Desktop/Denisse/Output/met_cor.csv")
-ban_cor <- read.csv("~/Desktop/Denisse/Output/ban_cor.csv")
 ```
 
 #Correlations
