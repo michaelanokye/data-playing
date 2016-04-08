@@ -12,11 +12,6 @@ met_cor <- read.csv("~/Desktop/Denisse/Output/met_cor.csv")
 ban_cor <- read.csv("~/Desktop/Denisse/Output/ban_cor.csv")
 ```
 
-View data
-```{r}
-head(correlations)
-```
-
 #Correlations
 
 ```{r}
@@ -28,6 +23,8 @@ Col[] <- "red"
 Col[cc>0.8] <- "blue"
 plotweb(cc, legend=F, maxarrow = 3, arr.col = Col)
 ```
+![correlations](correlations.png)
+
 
 #Metepec corrrelations
 
@@ -37,9 +34,11 @@ mc<- met_cor %>%
 diag(mc) <-0
 Col <- mc
 Col[] <- "red"
-Col[mc>0.8] <- "blue"
+Col[mc>0.7] <- "green"
 plotweb(mc, legend=F, maxarrow = 3, arr.col = Col)
 ```
+![metepec](met_cor.png)
+
 
 #Banderas correlations
 
@@ -48,7 +47,8 @@ bc<- ban_cor %>%
   select(-X)
 diag(bc) <-0
 Col <- bc
-Col[] <- "red"
-Col[bc>0.8] <- "blue"
+Col[] <- "black"
+Col[bc>0.8] <- "magenta"
 plotweb(bc, legend=T, maxarrow = 3, arr.col = Col, bty="n")
 ```
+![banderas](ban_cor.png)
